@@ -1,0 +1,5 @@
+export const SHIPPING_TYPES = {
+  LOADING: "LOADING",
+  SUCCESS: "SUCCESS",
+  ERROR: "ERROR",
+};
