@@ -9,24 +9,28 @@ const Shop = () => {
   const dispatch = useDispatch();
   const shipping = useSelector((state) => state.shipping);
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
+
+  const { data, filteredData } = shipping;
 
   useEffect(() => {
     dispatch(getData());
   }, []);
 
-  const renderItems = () => {
-    const { data } = shipping;
-
+  const renderItems = (data) => {
     return data.map((item) => {
-      return <Item key={item.id} item={item} />;
+      return <Item key={item.id} item={item} cart={cart.data} />;
     });
   };
 
   return (
     <div className="ecommerce-shop">
       <p>{shipping.data.length} Product(s) found.</p>
-      <div className="items">{shipping.data.length > 0 && renderItems()}</div>
+      {filteredData.length === 0 && (
+        <div className="items">{data.length > 0 && renderItems(data)}</div>
+      )}
+      {filteredData.length > 0 && (
+        <div className="items">{renderItems(filteredData)}</div>
+      )}
       <Cart items={cart.data} />
     </div>
   );

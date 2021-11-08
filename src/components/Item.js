@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/actions/cartActions";
 
-const Item = ({ item }) => {
+const Item = ({ item, cart }) => {
+  const [isAdded, setIsAdded] = useState(false);
+
   const dispatch = useDispatch();
 
   const handleCart = () => dispatch(addToCart(item));
+
+  const getQuantity = () => {
+    return cart.map((data) => data.id === item.id && data.quantity);
+  };
+
+  useEffect(() => {
+    const added = cart.filter((data) => data.id === item.id);
+    added.length > 0 ? setIsAdded(true) : setIsAdded(false);
+  }, [cart, item.id]);
 
   return (
     <div className="item">
@@ -20,9 +31,17 @@ const Item = ({ item }) => {
         </span>
         <span>.{item.details.price.toString().split(".")[1]}</span>
       </div>
-      <button className="add-to-cart" onClick={handleCart}>
-        Add to cart
-      </button>
+      {!isAdded ? (
+        <button className="add-to-cart" onClick={handleCart}>
+          Add to cart
+        </button>
+      ) : (
+        <div className="quantity-btn">
+          <button className="increment">+</button>
+          <p className="quantity">{getQuantity()}</p>
+          <button className="decrement">-</button>
+        </div>
+      )}
     </div>
   );
 };

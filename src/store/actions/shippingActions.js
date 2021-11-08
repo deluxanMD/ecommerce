@@ -24,3 +24,13 @@ export const getData = () => async (dispatch) => {
     dispatch(error("Something error happened!"));
   }
 };
+
+export const filterBySize = (size) => ({
+  type: SHIPPING_TYPES.FILTER_BY_SIZE,
+  payload: size,
+});
+
+export const clearFilter = (size) => ({
+  type: SHIPPING_TYPES.CLEAR_FILTER,
+  payload: size,
+});

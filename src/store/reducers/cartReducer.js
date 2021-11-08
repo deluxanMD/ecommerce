@@ -11,6 +11,11 @@ const cartReducer = (state = initial_state, action) => {
         ...state,
         data: [...state.data, action.payload],
       };
+    case CART_TYPES.INCREMENT:
+      return {
+        ...state,
+        data: [...state.data],
+      };
     default:
       return state;
   }
