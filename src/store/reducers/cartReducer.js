@@ -14,7 +14,16 @@ const cartReducer = (state = initial_state, action) => {
     case CART_TYPES.INCREMENT:
       return {
         ...state,
-        data: [...state.data],
+        data: state.data.filter(
+          (item) => (item.quantity += item.id === action.payload.id && 1)
+        ),
+      };
+    case CART_TYPES.DECREMENT:
+      return {
+        ...state,
+        data: state.data.filter(
+          (item) => (item.quantity -= item.id === action.payload.id && 1)
+        ),
       };
     default:
       return state;

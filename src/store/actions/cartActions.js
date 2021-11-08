@@ -8,6 +8,12 @@ export const addToCart = (item) => {
   };
 };
 
-export const increment = (item) => ({ type: CART_TYPES.INCREMENT });
+export const increment = (item) => ({
+  type: CART_TYPES.INCREMENT,
+  payload: item,
+});
 
-export const decrement = (item) => ({ type: CART_TYPES.DECREMENT });
+export const decrement = (item) => ({
+  type: CART_TYPES.DECREMENT,
+  payload: item,
+});

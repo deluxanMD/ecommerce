@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../store/actions/cartActions";
+import { addToCart, increment, decrement } from "../store/actions/cartActions";
 
 const Item = ({ item, cart }) => {
   const [isAdded, setIsAdded] = useState(false);
@@ -8,6 +8,10 @@ const Item = ({ item, cart }) => {
   const dispatch = useDispatch();
 
   const handleCart = () => dispatch(addToCart(item));
+
+  const incrementQty = () => dispatch(increment(item));
+
+  const decrementQty = () => dispatch(decrement(item));
 
   const getQuantity = () => {
     return cart.map((data) => data.id === item.id && data.quantity);
@@ -37,9 +41,13 @@ const Item = ({ item, cart }) => {
         </button>
       ) : (
         <div className="quantity-btn">
-          <button className="increment">+</button>
+          <button className="increment" onClick={incrementQty}>
+            +
+          </button>
           <p className="quantity">{getQuantity()}</p>
-          <button className="decrement">-</button>
+          <button className="decrement" onClick={decrementQty}>
+            -
+          </button>
         </div>
       )}
     </div>

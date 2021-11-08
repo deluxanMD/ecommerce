@@ -17,7 +17,7 @@ const CartItem = ({ item }) => {
             <p>{item.name.substring(0, 30)}</p>
             <p className="quantity">Quantity: {item.quantity}</p>
           </div>
-          <p className="price">${item.details.price}</p>
+          <p className="price">${item.details.price * item.quantity}</p>
         </Fragment>
       )}
     </div>
