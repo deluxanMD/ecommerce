@@ -102,6 +102,28 @@
             background-color: lightgray;
           }
         }
+
+        .quantity-btn {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+
+          button {
+            background-color: black;
+            color: white;
+            outline: 0;
+            border: 0;
+            width: 40%;
+            padding: 10px;
+            margin-top: 20px;
+            font-size: 16px;
+            cursor: pointer;
+          }
+
+          .quantity {
+            font-size: 16px;
+          }
+        }
       }
     }
   }
@@ -139,6 +161,23 @@
         .price {
           color: orange;
         }
+      }
+    }
+
+    .sub-total {
+      display: flex;
+      justify-content: space-between;
+      margin-left: 20px;
+      margin-right: 20px;
+
+      .heading {
+        color: gray;
+        text-transform: uppercase;
+      }
+
+      .total-amount {
+        color: orange;
+        font-size: 24px;
       }
     }
   }
