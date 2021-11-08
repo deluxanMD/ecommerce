@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getData } from "../store/actions/shippingActions";
+import Cart from "./Cart";
 import Item from "./Item";
 
 const Shop = () => {
@@ -24,6 +25,7 @@ const Shop = () => {
     <div className="ecommerce-shop">
       <p>{shipping.data.length} Product(s) found.</p>
       <div className="items">{shipping.data.length > 0 && renderItems()}</div>
+      <Cart items={shipping.data} />
     </div>
   );
 };

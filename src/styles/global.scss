@@ -105,4 +105,49 @@
       }
     }
   }
+
+  .ecommerce-cart {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 500px;
+    height: 100vw;
+    background-color: black;
+    color: white;
+
+    .total {
+      text-align: center;
+    }
+
+    .cart-items {
+      .cart-item {
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 10px;
+
+        display: flex;
+        margin: 5px;
+
+        .cart-item-details {
+          margin: 5px;
+
+          .quantity {
+            color: grey;
+          }
+        }
+
+        .price {
+          color: orange;
+        }
+      }
+    }
+  }
+
+  .fa-shopping-cart {
+    position: absolute;
+    cursor: pointer;
+    background-color: lightgray;
+    padding: 20px;
+    z-index: 999;
+  }
 }
