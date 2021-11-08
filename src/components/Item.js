@@ -1,6 +1,12 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../store/actions/cartActions";
 
 const Item = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const handleCart = () => dispatch(addToCart(item));
+
   return (
     <div className="item">
       {item.details.tag !== "" && <h6 className="tag">{item.details.tag}</h6>}
@@ -14,7 +20,9 @@ const Item = ({ item }) => {
         </span>
         <span>.{item.details.price.toString().split(".")[1]}</span>
       </div>
-      <button className="add-to-cart">Add to cart</button>
+      <button className="add-to-cart" onClick={handleCart}>
+        Add to cart
+      </button>
     </div>
   );
 };

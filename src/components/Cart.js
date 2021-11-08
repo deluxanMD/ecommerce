@@ -7,7 +7,11 @@ const Cart = ({ items }) => {
   const handleClick = () => setIsCartOpened(!isCartOpened);
 
   const renderCartItems = () => {
-    return items.map((item) => <CartItem item={item} />);
+    if (items.length === 0) {
+      return <CartItem item={null} />;
+    } else {
+      return items.map((item) => <CartItem item={item} />);
+    }
   };
 
   return (
@@ -19,7 +23,7 @@ const Cart = ({ items }) => {
       ></i>
       {isCartOpened && (
         <div className="ecommerce-cart">
-          <p className="total">2 Items</p>
+          <p className="total">{items.length} Items</p>
           <div className="cart-items">{renderCartItems()}</div>
         </div>
       )}

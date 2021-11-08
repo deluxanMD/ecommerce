@@ -8,6 +8,8 @@ import Item from "./Item";
 const Shop = () => {
   const dispatch = useDispatch();
   const shipping = useSelector((state) => state.shipping);
+  const cart = useSelector((state) => state.cart);
+  console.log(cart);
 
   useEffect(() => {
     dispatch(getData());
@@ -25,7 +27,7 @@ const Shop = () => {
     <div className="ecommerce-shop">
       <p>{shipping.data.length} Product(s) found.</p>
       <div className="items">{shipping.data.length > 0 && renderItems()}</div>
-      <Cart items={shipping.data} />
+      <Cart items={cart.data} />
     </div>
   );
 };
