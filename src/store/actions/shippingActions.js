@@ -16,7 +16,11 @@ const error = (err) => ({
 export const getData = () => async (dispatch) => {
   dispatch(loading());
 
-  const results = await getClothes();
+  const result = await getClothes();
 
-  console.log(results);
+  if (result.status === 200 && result.data.length > 0) {
+    dispatch(success(result.data));
+  } else {
+    dispatch(error("Something error happened!"));
+  }
 };
